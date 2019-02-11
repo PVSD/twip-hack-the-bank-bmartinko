@@ -18,18 +18,23 @@ public class Main {
             System.out
                     .print("Please enter the name to whom the account belongs. (\"Exit\" to abort) ");
             name = kbReader.nextLine();
+
             if (!name.equalsIgnoreCase("EXIT")) {
                 System.out.print("Please enter the amount of the deposit. ");
                 double amount = kbReader.nextDouble();
                 System.out.println(" "); // gives an eye pleasing blank line
                 // between accounts
                 bankAccount theAccount = new bankAccount(name, amount);
+                bankAccount.log(name, amount);
                 iter.add(theAccount);
+            } else {
+                System.out.println("Goodbye");
             }
         } while (!name.equalsIgnoreCase("EXIT"));
 
         // Search aryLst and print out the name and amount of the largest bank
         // account
+
         bankAccount ba = (bankAccount) iter.previous();
         double maxBalance = ba.balance; // set last account as the winner so far
         String maxName = ba.name;
